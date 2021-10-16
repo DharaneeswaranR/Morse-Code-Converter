@@ -75,18 +75,30 @@ def encrypt(text):
 
     try:
         for char in text:
-            if char != ' ':
+            if char in morseDict.keys():
                 encryted_text += morseDict[char] + ' '
             else:
-                encryted_text += ' '
-
+                encryted_text += '/'
+            
     except:
         pass
 
     return encryted_text
 
 def main():
-    pass
+    print("\n########################### MORSE CODE ###########################")
+    
+    choice = True
+
+    while choice:
+        text = input("\nEnter text to be converted into Morse code\n>> ")
+        print("\nMorse code\n>> ", encrypt(text))
+
+        print("\nDo you want to try again? (Y/N)")
+
+        choice = True if input(">> ") in ('Yes', 'YES', 'yes', 'Y', 'y') else False
+
+    print("\n########################## THANK YOU! ###########################\n")
 
 if __name__ == '__main__':
     main()
