@@ -1,4 +1,8 @@
+# Python script to convert Morse code to text or vice versa.
+
 def encrypt(text):
+    # Dictionary to store coresponding morse code for 
+    # every characters allowed.
     morseDict = {
                     'A':'.-', 
                     'B':'-...',
@@ -25,33 +29,7 @@ def encrypt(text):
                     'W':'.--',
                     'X':'-..-', 
                     'Y':'-.--', 
-                    'Z':'--..',
-                    'a':'.-', 
-                    'b':'-...',
-                    'c':'-.-.',
-                    'd':'-..', 
-                    'e':'.',
-                    'f':'..-.', 
-                    'g':'--.', 
-                    'h':'....',
-                    'i':'..', 
-                    'j':'.---', 
-                    'k':'-.-',
-                    'l':'.-..', 
-                    'm':'--', 
-                    'n':'-.',
-                    'o':'---', 
-                    'p':'.--.', 
-                    'q':'--.-',
-                    'r':'.-.', 
-                    's':'...', 
-                    't':'-',
-                    'u':'..-', 
-                    'v':'...-', 
-                    'w':'.--',
-                    'x':'-..-', 
-                    'y':'-.--', 
-                    'z':'--..',
+                    'Z':'--..',           
                     '1':'.----', 
                     '2':'..---', 
                     '3':'...--',
@@ -71,19 +49,20 @@ def encrypt(text):
                     ')':'-.--.-'
                 }
     
-    decrypted_text = ""
+    # String to store decrypted text
+    encrypted_text = ""
 
     try:
         for char in text:
             if char in morseDict.keys():
-                decrypted_text += morseDict[char] + ' '
+                encrypted_text += morseDict[char] + ' '
             else:
-                decrypted_text += '/ '
+                encrypted_text += '/ '
             
     except:
         pass
 
-    return decrypted_text
+    return encrypted_text
 
 def decrypt(code):
     morseDict = {
@@ -155,7 +134,7 @@ def main():
 
         if oper == '1':
             text = input("\nEnter text to be converted into Morse code\n>> ")
-            print("\nMorse code\n>> ", encrypt(text))
+            print("\nMorse code\n>> ", encrypt(text.upper()))
         elif oper == '2':
             text = input("\nEnter Morse code to be converted into text\n>> ")
             print("\nMorse code\n>> ", decrypt(text))
